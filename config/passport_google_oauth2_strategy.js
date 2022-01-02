@@ -18,10 +18,12 @@ passport.use(new googleStratrgy({
             console.log("Error in passport google stargey",err);
             return;
         }
-        console.log(profile);
+        // console.log(profile);
 
         if(user)
         {
+            user.isGoogle=true;
+            user.save();
             return done(null,user);
         }
         else
@@ -41,6 +43,8 @@ passport.use(new googleStratrgy({
                         console.log("error in creating user",err);
                         return;
                     }
+                    user.isGoogle=true;
+                    user.save();
                     return done(null,user);
                 })
 

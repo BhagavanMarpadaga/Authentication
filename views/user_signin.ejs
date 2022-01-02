@@ -1,10 +1,15 @@
 <body>
-    
+
+
     <form action="/user/createSession" method="post">
-        <input type="email" name="email" placeholder="enter your emsil">
+        <input type="email" name="email" placeholder="enter your email">
         <input type="password" name="password" placeholder="enter your password">
         <input type="submit" value="sign in">
+        <div class="g-recaptcha" data-sitekey="6LfhseQdAAAAABkE-ZWks01UFXgtrsr__olbv80D"></div>
     </form>
 
 </body>
+<p>
+    <a href="/resetpwd">forgot password</a>
+</p>
 <p><a href="/user/auth/google">google signin/signup</a></p>

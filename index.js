@@ -9,9 +9,12 @@ const passport=require('passport');
 const passportLocal=require('./config/passport_local_strategy');
 const passportGoogle=require('./config/passport_google_oauth2_strategy');
 const mongoStore=require('connect-mongo');
+
+// const cookieParser=require('cookie-parser');
 const bcrypt=require('bcryptjs');
 const flash=require('connect-flash');
 const customMiddleware=require('./config/middleware');
+
 
 
 app.use(express.urlencoded({extended:true}));
@@ -41,6 +44,8 @@ store: mongoStore.create({
 }, function (err) {
     console.log(err);
 })}))
+
+
 //tell app to use session
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,10 +54,8 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(customMiddleware.setFlash);
 
-
-console.log("here i am passing to routes");
 app.use('/',require('./routes'));
-console.log("rotes are readed successfully");
+
 
 app.listen(port,function(err){
 

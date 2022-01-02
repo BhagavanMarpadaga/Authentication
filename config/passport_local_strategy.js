@@ -9,33 +9,39 @@ passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true},
     function (req, email, password, done) {
-
+        
         User.findOne({ email: email }, function (err, user) {
             
-
             // console.log('password',password,user.password);
             if (err) {
-                console.log("Error in finding the user in db");
+                console.log("Error in finding the user in db",err);
                 return done(err);
             }
             if (!user) {
+
+                console.log("checking i m i coming here again and again in side user not found");
+                req.flash('success','Invalid username/password');
+                // req.session.destroy();
                 return done(null, false);
             }
             bcrypt.compare(password,user.password,function(err,result){
                 if(err)
                 {
-                    console.log('error in decrypting code');
-                    return done(err);
+                    // console.log('error in decrypting code');
+                     done(err);
                 }
                 else if(!result)
                 {
-                    console.log("okay both passwords doesnt match");
-                    return done(null,false);
+                
+                   // console.log("checking i m i coming here again and again in sidepwd doesn't macth");
+                    req.flash('error','Invalid username/password');
+                    // req.session.destroy();
+                     done(null,false);
                 }
                 else {
-                    req.flash('success','logged in successfully');
-                    console.log("okay both passwords  matched");
-                    return done(null, user);
+                  
+                    console.log("okay both passwords matched");
+                     done(null, user);
                 }
             })
 
@@ -46,7 +52,7 @@ passport.use(new LocalStrategy({
 //serialize the user to decide which key is to be kept in cookies
 passport.serializeUser(function(user,done){
 
-   return done(null,user.id);
+    done(null,user.id);
 
 })
 
@@ -58,7 +64,7 @@ passport.deserializeUser(function(id,done){
             console.log("Error in deserializing the user",err);
             return;
         }
-        return done(null,user);
+         done(null,user);
     })
 })
 
@@ -74,7 +80,6 @@ passport.checkAuthentication=function(req,res,next)
     console.log('is Authenticated',req.isAuthenticated);
     if(req.isAuthenticated())
     {
-      
         return next();
     }
     else

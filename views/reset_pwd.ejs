@@ -1,6 +1,28 @@
-<body>
+<link rel="stylesheet" href="/css/reset_pwd.css">
+<!-- <body>
     <form action="/resetpwd/reset" method="post">
         <input type="email" placeholder="Enter your email" name="email">
         <input type="submit" value="click here to change password">
     </form>
-</body>
+</body> -->
+<body>
+    <div class="center">
+      <!-- <div class="card-image">	
+        <h2 class="card-heading">
+          Get started
+          <small>Let us create your account</small>
+        </h2>
+      </div> -->
+      <!-- <h1>Login</h1> -->
+      <h5>To reset your password, enter your email below and submit. An email will be sent to you with instructions about how to complete the process.</h5>
+      <form action="/resetpwd/reset"  method="post">
+        <div class="txt_field">
+            <input type="email" name="email" autocomplete="off" required>
+            <span></span>
+            <label>Email</label>
+        </div>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+
+  </body>

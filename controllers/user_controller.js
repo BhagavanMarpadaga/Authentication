@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
 const fetch = require('isomorphic-fetch');
 
 
@@ -41,8 +41,8 @@ module.exports.createUser = async function (req, res) {
                 if(newuser)
                 {
                     console.log('user added to db');
-                    req.flash('successfully siged up');
-                    return res.render('user_signin');
+                    req.flash('success','successfully signed up');
+                    return res.redirect('/user/signin');
                 } 
         }
     }

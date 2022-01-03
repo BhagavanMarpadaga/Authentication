@@ -9,8 +9,8 @@ const passport=require('passport');
 const passportLocal=require('./config/passport_local_strategy');
 const passportGoogle=require('./config/passport_google_oauth2_strategy');
 const mongoStore=require('connect-mongo');
-
-// const cookieParser=require('cookie-parser');
+const dotenv=require('dotenv').config();
+const cookieParser=require('cookie-parser');
 const bcrypt=require('bcryptjs');
 const flash=require('connect-flash');
 const customMiddleware=require('./config/middleware');
@@ -24,7 +24,7 @@ app.use(expresslayouts);
 //extractong styles in to the app
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
-
+app.use(express.static('./Assets'));
 
 
 //set up our views
@@ -57,7 +57,7 @@ app.use(customMiddleware.setFlash);
 app.use('/',require('./routes'));
 
 
-app.listen(port,function(err){
+app.listen(process.env.PORT || 5000,function(err){
 
     if(err)
     {

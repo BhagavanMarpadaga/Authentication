@@ -1,12 +1,55 @@
-<body>
+<link rel="stylesheet" href="/css/user_signup.css">
+<!-- <body>
     <form action="/user/createuser" method="post">
         <input type="text" name="name" placeholder="Enter your name">
         <input type="email" name="email" placeholder="Enter your email">
         <input type="password" name="password" placeholder="Enter your password">
         <input type="password" name="confirmPassword" placeholder="Reenter your password">
         <div class="g-recaptcha" data-sitekey="6LfhseQdAAAAABkE-ZWks01UFXgtrsr__olbv80D"></div>
-        <input type="submit" value="sign up">
+        <!-- <input type="submit" value="sign up"> -->
         
-    </form>
-    <p><a href="/user/auth/google">google signin/signup</a></p>
-</body>
+    <!-- </form>
+    <p><a href="/user/auth/google">google signin/signup</a></p> -->
+<!-- </body> --> 
+
+<body>
+    <div class="center">
+      <div class="card-image">	
+        <h2 class="card-heading">
+          Get started
+          <small>Let us create your account</small>
+        </h2>
+      </div>
+      <!-- <h1>Sign up</h1> -->
+      <form action="/user/createuser"  method="post">
+        
+        <div class="txt_field">
+            <input type="text" name="name" autocomplete="off" required>
+            <span></span>
+            <label>name</label>
+          </div>
+        <div class="txt_field">
+            <input type="email" name="email" autocomplete="off" required>
+            <span></span>
+            <label>Email</label>
+          </div>
+        <div class="txt_field">
+          <input type="password" name="password" autocomplete="off" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="confirmPassword" required>
+          <span></span>
+          <label>Confirm Password</label>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LfhseQdAAAAABkE-ZWks01UFXgtrsr__olbv80D"></div>
+        <input type="submit" value="Sign up">
+        <div class="signup_link">
+          Already have an account? <a href="/user/signin">Signin</a>
+        </div>
+        <a href="/user/auth/google"><div class="goolge-cont">continue with google </div></a>
+      </form>
+    </div>
+
+  </body>

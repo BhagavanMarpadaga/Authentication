@@ -1,6 +1,8 @@
 const mongoose=require('mongoose');
+const dotenv=require('dotenv').config();
 
-mongoose.connect('mongodb://localhost/authentication_dev');
+
+mongoose.connect(process.env.MONGO_URI);
 const db=mongoose.connection;
 
 db.on('error',function(err){

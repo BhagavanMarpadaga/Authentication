@@ -1,13 +1,21 @@
+<link rel="stylesheet" href="/css/home.css">
 <body>
-
-    <%if(success){%>
-        <p><%= success%></p>
-    <%}%>
-    <a href="/user/signout">signout</a></br>
-    <p>
-        <a href="/resetpwd">reset password</a>
-    </p>
-    
+    <header>
+        <div class="nav">
+            <div>
+                <a href="/user/signout"><i class="fas fa-sign-out-alt"></i>  signout</a></br>
+            </div>
+            <div>
+                <a href="/resetpwd"><i class="fas fa-unlock-alt"></i>  reset password</a>
+            </div>
+        </div>
+    </header>
+        <div class="card-image">
+            <h2 class="card-heading">
+                Get started</br>
+               Welcome <%= locals.user.name%>!
+            </h2>
+        </div>
 </body>
 
  

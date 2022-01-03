@@ -49,7 +49,8 @@ module.exports.sendresetLink = async function (req, res) {
     }
     else {
         req.flash('error','email id does not exists');
-        return res.redirect('/');
+        console.log('email id does not found');
+        return res.redirect('back');
     }
     //send a mail to user asking to create new password by giving one link
 
@@ -67,7 +68,6 @@ module.exports.allowToenterNewpwd= async function(req,res)
             accesstoken:req.params.id
             
         })
-
     }
     else
     {
@@ -119,6 +119,11 @@ module.exports.savenewPwd=async function(req,res){
                 return res.redirect('/user/signin');
             }
         })
+    }
+    else
+    {
+        req.flash('error','password does not match');
+        return res.redirect('back');
     }
 
 } 

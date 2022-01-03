@@ -1,15 +1,46 @@
-<body>
-
-
+<link rel="stylesheet" href="/css/user_signin.css">
+<!-- <body>
     <form action="/user/createSession" method="post">
         <input type="email" name="email" placeholder="enter your email">
         <input type="password" name="password" placeholder="enter your password">
         <input type="submit" value="sign in">
         <div class="g-recaptcha" data-sitekey="6LfhseQdAAAAABkE-ZWks01UFXgtrsr__olbv80D"></div>
     </form>
-
 </body>
 <p>
     <a href="/resetpwd">forgot password</a>
 </p>
-<p><a href="/user/auth/google">google signin/signup</a></p>
+<p><a href="/user/auth/google">google signin/signup</a></p> -->
+
+
+<body>
+    <div class="center">
+      <!-- <div class="card-image">	
+        <h2 class="card-heading">
+          Get started
+          <small>Let us create your account</small>
+        </h2>
+      </div> -->
+      <h1>Login</h1>
+      <form action="/user/createSession"  method="post">
+        <div class="txt_field">
+            <input type="email" name="email" autocomplete="off" required>
+            <span></span>
+            <label>Email</label>
+          </div>
+        <div class="txt_field">
+          <input type="password" name="password" autocomplete="off" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LfhseQdAAAAABkE-ZWks01UFXgtrsr__olbv80D"></div>
+		<div class="pass"> <a href="/resetpwd">Forgot Password?</a></div>
+        <input type="submit" value="Sign in">
+        <div class="signup_link">
+			Not a member? <a href="/user/signup">Signup</a>
+        </div>
+        <a href="/user/auth/google"><div class="goolge-cont">continue with google </div></a>
+      </form>
+    </div>
+
+  </body>

@@ -2,16 +2,24 @@ const express=require('express');
 const app=express();
 const port=8000;
 
+//to add partials
 const expresslayouts=require('express-ejs-layouts');
+//connect mongodb
 const db=require('./config/mongoose');
+//store user session
 const session=require('express-session');
 const passport=require('passport');
+//local authentication
 const passportLocal=require('./config/passport_local_strategy');
+//google authentication
 const passportGoogle=require('./config/passport_google_oauth2_strategy');
+//store seesion temporarily
 const mongoStore=require('connect-mongo');
 const dotenv=require('dotenv').config();
 const cookieParser=require('cookie-parser');
+//add encrypted passwords to db
 const bcrypt=require('bcryptjs');
+//to display flash messages
 const flash=require('connect-flash');
 const customMiddleware=require('./config/middleware');
 
@@ -21,7 +29,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(expresslayouts);
 
-//extractong styles in to the app
+//extracting styles in to the app
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 app.use(express.static('./Assets'));
@@ -31,6 +39,8 @@ app.use(express.static('./Assets'));
 app.set('view engine','ejs');
 app.set('views','./views');
 
+
+//use express session
 app.use(session({name:'Authentication',
 secret:'something',
 resave: false,

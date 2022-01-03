@@ -57,6 +57,7 @@ module.exports.createUser = async function (req, res) {
 //method to create a session
 module.exports.createSession = function (req, res) {
 
+    //check user logging through google authentication
     if (req.user.isGoogle) {
         User.findByIdAndUpdate(req.user.id,{isGoogle:false},function(err,user){
             if(err)
@@ -70,6 +71,7 @@ module.exports.createSession = function (req, res) {
         res.redirect('/');
     }
     else {
+        //verify captcha
         const response_key = req.body["g-recaptcha-response"];
         const secret_key = process.env.RECAPTCHA_SECRERKEY;
         const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${response_key}`;
@@ -123,11 +125,12 @@ module.exports.signin = function (req, res) {
 //     return res.render('reset_pwd',{title:'reset password'});
 // }
 
+//sing out
 module.exports.destrotysession = function (req, res) {
     req.logout();
-   // console.log("1");
+  
     req.flash('success', 'you are logged out successfully');
-   // console.log("2")
+ 
     res.redirect('/user/signin');
 
 }

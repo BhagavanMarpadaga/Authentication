@@ -8,12 +8,13 @@ const queue=require('../config/kue');
 const bcrypt=require('bcryptjs');
 
 
-
+//render page to enter email
 module.exports.forgotpwd=function(req,res){
 
    return  res.render('reset_pwd',{title:'Reset password'});
 
 }
+//send reset password link via email using nodemailer
 module.exports.sendresetLink = async function (req, res) {
 
     //console.log(req.body);
@@ -32,7 +33,7 @@ module.exports.sendresetLink = async function (req, res) {
             userName: user.name,
             userEmail: user.email
         };
-        //this line sends the mail to user if user clicks on forgot password
+        //this line sends the mail to user if user clicks on forgot password/reset password
     //    resetPwdmailer.newPwd(dataTosent);
              let job=queue.create('emails',dataTosent).save(function(err){
                if(err)
@@ -52,9 +53,10 @@ module.exports.sendresetLink = async function (req, res) {
         console.log('email id does not found');
         return res.redirect('back');
     }
-    //send a mail to user asking to create new password by giving one link
+  
 
 }
+//render the page to enter new password 
 module.exports.allowToenterNewpwd= async function(req,res)
 {
 

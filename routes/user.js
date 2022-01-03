@@ -10,11 +10,12 @@ router.get('/signin',userController.signin);
 
 // router.post('/reset/:id',userController.updatePwd);
 
+//routers for local authentication
 router.post('/createuser',userController.createUser);
 router.post('/createSession',passport.authenticate('local',{failureRedirect:'/user/signin'}), userController.createSession);
 
 
-
+//routes for google authentication
 router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
 router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/signin'}),userController.createSession);
 router.get('/signout',userController.destrotysession);

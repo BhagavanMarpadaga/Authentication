@@ -3,12 +3,13 @@ const googleStratrgy=require('passport-google-oauth').OAuth2Strategy;
 const crypto=require('crypto');
 const User=require('../models/user');
 const bcrypt=require('bcryptjs');
+const dotenv=require('dotenv').config();
 
 //tell passport to use google
 //if accesstoken expires refresh token helps 
 passport.use(new googleStratrgy({
     clientID:"78092715911-7l7ntuvr1m5i7v2a29656ibr45kroi3o.apps.googleusercontent.com",
-    clientSecret:"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",
+    clientSecret:process.env.GOOGLE_CLIENT_SECRET,
     callbackURL:"http://localhost:8000/user/auth/google/callback",
 
 },function(accessToken,refreshToken,profile,done){
